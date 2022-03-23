@@ -4,6 +4,7 @@ import logging
 
 from pathlib import Path
 from getpass import getpass
+from typing import List
 from urllib.parse import urlparse
 from distutils.version import StrictVersion
 
@@ -390,7 +391,7 @@ class MoodleService:
 
         return changes
 
-    def add_options_to_courses(self, courses: [Course]):
+    def add_options_to_courses(self, courses: List[Course]):
         """
         Updates a array of courses with its options
         """
@@ -406,10 +407,10 @@ class MoodleService:
 
     @staticmethod
     def filter_courses(
-        changes: [Course],
+        changes: List[Course],
         config_helper: ConfigHelper,
         cookie_handler: CookieHandler = None,
-        courses_list: [Course] = None,
+        courses_list: List[Course] = None,
     ) -> [Course]:
         """
         Filters the changes course list from courses that
@@ -466,7 +467,11 @@ class MoodleService:
                     and (
                         download_descriptions
                         or file.content_type != 'description'
-                        or (file.module_modname == 'forum' and file.content_type == 'description' and file.content_filename != 'Forum intro')
+                        or (
+                            file.module_modname == 'forum'
+                            and file.content_type == 'description'
+                            and file.content_filename != 'Forum intro'
+                        )
                     )
                     # Filter Database Files
                     and (download_databases or file.content_type != 'database_file')

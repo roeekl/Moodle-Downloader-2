@@ -2,6 +2,7 @@ import sys
 import shutil
 
 from pathlib import Path
+from typing import Dict, List
 
 from moodle_dl.utils import cutie
 from moodle_dl.utils.logger import Log
@@ -194,7 +195,7 @@ class ConfigService:
 
         self.section_seperator()
 
-    def _select_courses_to_download(self, courses: [Course]):
+    def _select_courses_to_download(self, courses: List[Course]):
         """
         Asks the user for the courses that should be downloaded.
         @param courses: All available courses
@@ -232,7 +233,7 @@ class ConfigService:
         self.config_helper.remove_property('dont_download_course_ids')
         return download_course_ids
 
-    def _select_sections_to_download(self, sections: [{}], excluded: [int]) -> [int]:
+    def _select_sections_to_download(self, sections: List[Dict], excluded: List[int]) -> List[int]:
         """
         Asks the user for the sections that should be downloaded.
         @param sections: All available sections
@@ -260,7 +261,7 @@ class ConfigService:
 
         return dont_download_section_ids
 
-    def _set_options_of_courses(self, courses: [Course], sections: []):
+    def _set_options_of_courses(self, courses: List[Course], sections: List):
         """
         Let the user set special options for every single course
         """
@@ -331,7 +332,7 @@ class ConfigService:
                 sel = choices_courses[selected_course - 1]
                 self._change_settings_of(sel, options_of_courses, sections[sel.id])
 
-    def _change_settings_of(self, course: Course, options_of_courses: {}, sections: [{}]):
+    def _change_settings_of(self, course: Course, options_of_courses: Dict, sections: List[Dict]):
         """
         Ask for a new Name for the course.
         Then asks if a file structure should be created.

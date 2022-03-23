@@ -1,4 +1,5 @@
 import json
+from typing import List
 
 from moodle_dl.moodle_connector.request_helper import RequestHelper
 from moodle_dl.state_recorder.course import Course
@@ -73,7 +74,7 @@ class FirstContactHandler:
                 results.append(Course(course.get('id', 0), course.get('fullname', '')))
         return results
 
-    def fetch_courses_info(self, course_ids: [int]) -> [Course]:
+    def fetch_courses_info(self, course_ids: List[int]) -> [Course]:
         """
         Queries the Moodle system for info about courses in a list.
         @param course_ids: A list of courses ids
