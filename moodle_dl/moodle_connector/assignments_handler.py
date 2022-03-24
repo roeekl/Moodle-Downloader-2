@@ -86,7 +86,7 @@ class AssignmentsHandler:
 
         return result
 
-    def fetch_submissions(self, userid: int, assignments: Dict[int, Dict[int:Dict]]) -> Dict[int, Dict[int, Dict]]:
+    def fetch_submissions(self, userid: int, assignments: Dict[int, Dict[int, Dict]]) -> Dict[int, Dict[int, Dict]]:
         """
         Fetches for the assignments list of all courses the additionally
         submissions. This is kind of waste of resources, because there
