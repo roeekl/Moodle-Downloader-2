@@ -38,7 +38,7 @@ class TelegramFormater:
         return '<b>' + string + '</b>'
 
     @classmethod
-    def create_full_moodle_diff_messages(cls, changed_courses: List[Course]) -> [str]:
+    def create_full_moodle_diff_messages(cls, changed_courses: List[Course]) -> List[str]:
         """
         Creates telegram messages with all changed files. This includes new,
         modified and deleted files. Files that have changed since the last message.
@@ -103,7 +103,7 @@ class TelegramFormater:
         return result_list
 
     @classmethod
-    def create_full_error_messages(cls, details) -> [str]:
+    def create_full_error_messages(cls, details) -> List[str]:
         """
         Creates error messages
         """
@@ -118,7 +118,7 @@ class TelegramFormater:
         return result_list
 
     @classmethod
-    def create_full_failed_downloads_messages(cls, failed_downloads: List[URLTarget]) -> [str]:
+    def create_full_failed_downloads_messages(cls, failed_downloads: List[URLTarget]) -> List[str]:
         """
         Creates messages with all failed downloads
         """

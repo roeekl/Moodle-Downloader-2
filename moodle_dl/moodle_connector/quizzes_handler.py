@@ -14,7 +14,7 @@ class QuizzesHandler:
         self.request_helper = request_helper
         self.version = version
 
-    def fetch_quizzes(self, courses: List[Course]) -> {int: {int: Dict}}:
+    def fetch_quizzes(self, courses: List[Course]) -> Dict[int, Dict[int, Dict]]:
         """
         Fetches the Quizzes List for all courses from the
         Moodle system
@@ -83,7 +83,7 @@ class QuizzesHandler:
 
         return result
 
-    def fetch_quizzes_files(self, userid: int, quizzes: Dict) -> {}:
+    def fetch_quizzes_files(self, userid: int, quizzes: Dict) -> Dict:
         """
         Fetches for the quizzes list of all courses the additionally
         entries. This is kind of waste of resources, because there
@@ -130,7 +130,7 @@ class QuizzesHandler:
 
         return quizzes
 
-    def _get_files_of_attempts(self, attempts: List, quiz_name: str) -> []:
+    def _get_files_of_attempts(self, attempts: List, quiz_name: str) -> List:
         result = []
 
         for i, attempt in enumerate(attempts):

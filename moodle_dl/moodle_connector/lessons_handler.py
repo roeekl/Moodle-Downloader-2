@@ -84,7 +84,7 @@ class LessonsHandler:
 
         return result
 
-    def fetch_lessons_files(self, userid: int, lessons: Dict) -> {}:
+    def fetch_lessons_files(self, userid: int, lessons: Dict) -> Dict:
         """
         Fetches for the lessons list of all courses the additionally
         entries. This is kind of waste of resources, because there
@@ -133,7 +133,7 @@ class LessonsHandler:
 
         return lessons
 
-    def _get_files_of_attempt(self, attempt_result: Dict, lesson_name: str) -> []:
+    def _get_files_of_attempt(self, attempt_result: Dict, lesson_name: str) -> List:
         result = []
 
         answerpages = attempt_result.get('answerpages', [])

@@ -241,7 +241,7 @@ class MoodleService:
 
         return moodle_token
 
-    def fetch_state(self) -> [Course]:
+    def fetch_state(self) -> List[Course]:
         """
         Gets the current status of the configured Moodle account and compares
         it with the last known status for changes. It does not change the
@@ -411,7 +411,7 @@ class MoodleService:
         config_helper: ConfigHelper,
         cookie_handler: CookieHandler = None,
         courses_list: List[Course] = None,
-    ) -> [Course]:
+    ) -> List[Course]:
         """
         Filters the changes course list from courses that
         should not get downloaded

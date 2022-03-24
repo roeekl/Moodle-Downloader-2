@@ -48,7 +48,7 @@ class ResultsHandler:
 
         return section_id not in dont_download_sections_ids or len(dont_download_sections_ids) == 0
 
-    def _get_files_in_sections(self, course_sections: List, excluded_sections: [int]) -> [File]:
+    def _get_files_in_sections(self, course_sections: List, excluded_sections: List[int]) -> List[File]:
         """
         Iterates over all sections of a course to find files (or modules).
         @param course_sections: The course object returned by Moodle,
@@ -70,7 +70,7 @@ class ResultsHandler:
 
         return files
 
-    def _get_files_in_modules(self, section_name: str, section_id: int, section_modules: List) -> [File]:
+    def _get_files_in_modules(self, section_name: str, section_id: int, section_modules: List) -> List[File]:
         """
         Iterates over all modules to find files (or content) in them.
         @param section_name: The name of the section to be iterated over.
@@ -192,7 +192,7 @@ class ResultsHandler:
         content_html: str,
         no_search_for_moodle_urls: bool,
         filter_urls_containing: List[str],
-    ) -> [File]:
+    ) -> List[File]:
         """Parses a html string to find all urls in it. Then it creates for every url a file entry.
 
         Args:
@@ -285,7 +285,7 @@ class ResultsHandler:
 
     def _handle_cookie_mod(
         self, section_name: str, section_id: int, module_name: str, module_modname: str, module_id: str, module_url: str
-    ) -> [File]:
+    ) -> List[File]:
         """
         Creates a list of files out of a cookie module
         @param module_url: The url to the cookie module.
@@ -321,7 +321,7 @@ class ResultsHandler:
         module_modname: str,
         module_id: str,
         module_contents: List,
-    ) -> [File]:
+    ) -> List[File]:
         """
         Iterates over all files that are in a module or assignment and
         returns a list of all files
@@ -412,7 +412,7 @@ class ResultsHandler:
         module_modname: str,
         module_id: str,
         module_description: str,
-    ) -> [File]:
+    ) -> List[File]:
         """
         Creates a description file
         @param module_description: The description of the module
@@ -481,7 +481,7 @@ class ResultsHandler:
         """
         self.course_fetch_addons = course_fetch_addons
 
-    def fetch_files(self, course: Course) -> [File]:
+    def fetch_files(self, course: Course) -> List[File]:
         """
         Queries the Moodle system for all the files that
         are present in a course

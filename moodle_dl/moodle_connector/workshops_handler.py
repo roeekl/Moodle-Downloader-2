@@ -13,7 +13,7 @@ class WorkshopsHandler:
         self.request_helper = request_helper
         self.version = version
 
-    def fetch_workshops(self, courses: List[Course]) -> {int: {int: Dict}}:
+    def fetch_workshops(self, courses: List[Course]) -> Dict[int, Dict[int, Dict]]:
         """
         Fetches the Workshops List for all courses from the
         Moodle system
@@ -118,7 +118,7 @@ class WorkshopsHandler:
 
         return result
 
-    def fetch_workshops_files(self, userid: int, workshops: Dict) -> {}:
+    def fetch_workshops_files(self, userid: int, workshops: Dict) -> Dict:
         """
         Fetches for the workshops list of all courses the additionally
         entries. This is kind of waste of resources, because there
@@ -183,7 +183,7 @@ class WorkshopsHandler:
 
     def _get_files_of_workshop(
         self, submissions_result: Dict, reviewer_assessments_result: Dict, grades_result: Dict
-    ) -> []:
+    ) -> List:
         result = []
 
         submissions = submissions_result.get('submissions', [])
